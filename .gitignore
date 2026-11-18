@@ -9,8 +9,14 @@ env/
 ENV/
 .env
 
-# Model artifacts (optional to track or ignore, keeping .pkl can be tracked if small < 100MB)
-# model.pkl is ~4KB so it can be committed to GitHub easily!
+# Database
+*.sqlite3
+db.sqlite3
+
+# Node / Frontend
+node_modules/
+dist/
+*.log
 
 # IDE & OS files
 .vscode/
