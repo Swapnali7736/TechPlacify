@@ -1,136 +1,262 @@
-# 💻 TechPlacify – Technical Student Placement Predictor
+# 💻 TechPlacify – Technical Student Placement Predictor 
 
-A Machine Learning web application built with Python and Flask that predicts campus placement outcomes, evaluates student eligibility for different company tiers, and provides personalized career action plans.
+**TechPlacify** is a full-stack web application built using **React.js, Django REST Framework (DRF), and Scikit-learn** that predicts campus placement outcomes, evaluates student eligibility for different company tiers, and provides personalized career action plans.
 
-
-## 📌 Overview
-
-Traditional placement prediction models often focus primarily on academic scores such as CGPA. TechPlacify considers additional factors, including **projects built**, **technical skills**, **internship experience**, and **active backlog counts**, to evaluate a student's placement readiness.
-
-This application evaluates a student's profile using the following features:
-
-1. **Candidate Profile:** Student Name, Stream (Computer Science, Information Technology, or Other), CGPA, and active backlog count (`0`, `1`, `2`, `3`).
-
-2. **Practical Experience:** Number of completed internships.
-
-3. **Project Portfolio:** Number of projects, with entries for both **Primary (Major)** and **Secondary (Minor)** projects along with their domains (Web / Full-Stack, AI / Machine Learning, Mobile App, Cloud / DevOps, Other).
-
-4. **Technical Skillset:** Free-text technical skill input supporting skills such as Python, Java, C++, DSA, SQL, Web Development, AI/ML, Cloud, Django, Flask, JavaScript, and Git.
-
-5. **Placement Probability:** Displays an estimated placement probability based on the trained Machine Learning model output and additional project-specific adjustment rules.
-
-6. **Company Tier Matching:** Evaluates eligibility for Tier 1 Product & Tech Giants, Tier 2 High-Growth Tech & FinTech, and Tier 3 IT Services & Mass Recruiters.
-
-7. **Personalized Action Plan:** Generates practical recommendations based on CGPA, backlogs, projects, internships, and technical skills to help students improve their placement readiness.
+Unlike traditional prediction models that primarily consider academic scores such as CGPA, TechPlacify factors in **technical skills, hands-on projects, internship experience, and active backlogs** to evaluate a student's placement readiness.
 
 
-## 💡 Key Highlights
 
-* **Holistic Placement Readiness Analysis:** Considers CGPA, internships, projects, technical skills, and backlogs instead of relying only on academic scores.
+## 🚀 Key Features
 
-* **Company Tier Eligibility Matching:**
+### 🔐 1. Complete Authentication System
 
-  * **Tier 1 (12–25+ LPA):** Amazon, Google, Microsoft, Adobe, Atlassian
-  * **Tier 2 (6–12 LPA):** Zoho, Freshworks, Oracle, Capgemini, Virtusa
-  * **Tier 3 (3.5–6.5 LPA):** TCS, Infosys, Wipro, Accenture, Cognizant
+- **User Registration:** Students can create accounts with their academic branch, email, username, and credentials.
+- **JWT Authentication:** Secure authentication using JSON Web Tokens (Access and Refresh tokens).
+- **Automatic Token Refresh:** Axios interceptors handle token refresh when access tokens expire.
+- **Password Reset:** Forgot Password and Reset Password functionality.
+- **Protected Routes:** Dashboard and prediction history are accessible only to authenticated users.
 
-* **Personalized Action Plan:** Suggests improvements such as learning Data Structures and Algorithms (DSA), clearing active backlogs, building additional projects, gaining internship experience, and improving CGPA.
+### 🎯 2. Intelligent Placement Predictor
 
-* **Multiple Projects Showcase:** Allows students to enter details for both a Primary Project and an optional Secondary Project.
+- **Multi-Factor Analysis:** Evaluates CGPA, academic branch, internships, projects, active backlogs, and technical skills.
+- **Machine Learning Model:** Uses a trained Scikit-learn `DecisionTreeClassifier` saved as `model.pkl`.
+- **Placement Probability:** Displays an estimated placement probability based on model predictions and additional adjustment rules.
+- **Interactive Probability Meter:** Visualizes placement probability using a circular gauge with color-coded indicators.
 
-* **Flexible Technical Skill Input:** Accepts comma-separated skills and maps recognized skills into categories used by the Machine Learning model.
+### 🏢 3. Company Tier Eligibility Matching
 
-* **Backlog Analysis:** Evaluates the number of active backlogs when determining company-tier eligibility and generating career recommendations.
+Evaluates student profiles against different company tiers based on academic performance, projects, technical skills, and backlogs.
 
-* **Pre-Trained Machine Learning Model:** Uses a Scikit-learn `DecisionTreeClassifier` saved as `model.pkl` to generate placement predictions.
+
+ **Tier 1 – Product & Tech Giants** | 12–25+ LPA | Amazon, Google, Microsoft, Adobe, Atlassian 
+ **Tier 2 – High-Growth Tech & FinTech** | 6–12 LPA | Zoho, Freshworks, Oracle, Capgemini, Virtusa 
+ **Tier 3 – IT Services & Mass Recruiters** | 3.5–6.5 LPA | TCS, Infosys, Wipro, Accenture, Cognizant 
+
+**Eligibility Evaluation:**
+
+- Tier 1 considers CGPA 8.0+, zero backlogs, DSA skills, and major projects.
+- Tier 2 considers CGPA 7.0+, projects, and technical skills.
+- Tier 3 evaluates students against baseline eligibility criteria.
+
+The application displays eligibility status and identifies missing requirements to help students understand what they need to improve.
+
+*Note: Salary ranges and eligibility criteria are illustrative benchmarks used by the application and may vary across actual company recruitment processes.*
+
+### 📋 4. Personalized Career Action Plan
+
+Generates personalized recommendations based on a student's profile, such as:
+
+- Improving CGPA.
+- Learning Data Structures and Algorithms (DSA).
+- Clearing active backlogs.
+- Building additional projects.
+- Gaining internship experience.
+- Strengthening technical skills.
+
+### 📊 5. Prediction History Tracking
+
+- Automatically saves prediction records.
+- Displays previous prediction results.
+- Helps students track placement probability over time.
+- Allows users to delete older prediction records.
+
+### 🧑‍💻 6. Project Portfolio Analysis
+
+- Supports primary (major) and secondary (minor) projects.
+- Accepts project names and domains.
+- Considers the number of projects during placement readiness evaluation.
+
+### 🛠️ 7. Technical Skill Analysis
+
+Supports flexible technical skill input, including:
+
+- Python
+- Java
+- C++
+- DSA
+- SQL
+- Web Development
+- AI/ML
+- Cloud
+- Django
+- Flask
+- JavaScript
+- Git
+
+Recognized skills are mapped into categories used by the placement prediction system.
+
 
 
 ## 🛠️ Tech Stack
 
-* **Language:** Python 3
-* **Machine Learning:** Scikit-learn (`DecisionTreeClassifier`)
-* **Data Manipulation:** Pandas
-* **Web Framework:** Flask
-* **Frontend:** HTML5, CSS3, Bootstrap 5, Jinja2
-* **Model Storage:** Pickle
+
+ Frontend - React.js, Vite, JavaScript 
+ Styling - Tailwind CSS, CSS3 
+ Routing - React Router 
+ API Communication - Axios 
+ Icons - Lucide React 
+ Backend - Python, Django, Django REST Framework 
+ Authentication - SimpleJWT 
+ Machine Learning - Scikit-learn, DecisionTreeClassifier 
+ Data Processing - Pandas, NumPy 
+ Model Storage - Pickle 
+ Database - SQLite 
+ Development Tools - Git, GitHub, VS Code, Postman 
+
 
 
 ## 📁 Project Structure
 
-```text
+
 TechPlacify/
-├── app.py                         # Flask web application and prediction logic
-├── train.py                       # ML model training and evaluation script
-├── model.pkl                      # Serialized trained model
-├── collegePlacement_cleanData.csv # Placement dataset
-├── templates/
-│   └── placement.html             # Bootstrap 5 user interface
-├── requirements.txt               # Dependencies
-├── .gitignore                     # Git ignore rules
-└── README.md                      # Project documentation
-```
+│
+├── backend/
+│   ├── accounts/
+│   │   ├── migrations/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   └── urls.py
+│   │
+│   ├── predictions/
+│   │   ├── migrations/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── ml_service.py
+│   │   └── urls.py
+│   │
+│   ├── techplacify_backend/
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── asgi.py
+│   │   └── wsgi.py
+│   │
+│   ├── model.pkl
+│   └── manage.py
+│
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── client.js
+│   │   ├── components/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── ProtectedRoute.jsx
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── History.jsx
+│   │   │   ├── ForgotPassword.jsx
+│   │   │   └── ResetPasswordConfirm.jsx
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── run_backend.bat
+├── run_frontend.bat
+├── requirements.txt
+└── README.md
 
 
+## ⚙️ Installation & Setup
 
-## 🚀 How to Run Locally
+### Prerequisites
+
+Make sure the following tools are installed:
+
+- Python 3.x
+- Node.js and npm
+- Git
 
 ### 1. Clone the Repository
 
-Replace the example URL with your actual GitHub repository URL.
+git clone https://github.com/Swapnali7736/TechPlacify.git
 
-```bash
-git clone <your-repository-url>
+Navigate to the project directory:
+
 cd TechPlacify
-```
 
-### 2. Set Up a Virtual Environment
 
-**On Windows:**
+### 2. Create a Virtual Environment
 
-```bash
+
 python -m venv venv
-.\venv\Scripts\activate
-```
 
-**On macOS/Linux:**
+### 3. Activate Virtual Environment
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+**Windows PowerShell:**
 
-### 3. Install Dependencies
+venv\Scripts\activate
 
-```bash
+### 4. Install Python Dependencies
+
 pip install -r requirements.txt
-```
 
-### 4. Train the Model (Optional, if `model.pkl` is already included)
+### 5. Setup Django Backend
 
-```bash
-python train.py
-```
+Navigate to the backend directory:
 
-### 5. Launch the Web Application
+cd backend
 
-```bash
-python app.py
-```
+Apply database migrations:
 
-Open your browser and navigate to:
+python manage.py migrate
 
-```text
-http://127.0.0.1:5000/
-```
+Start the Django development server:
+
+python manage.py runserver
+
+**Backend URL:**
+
+http://127.0.0.1:8000/
+
+### 6. Setup React Frontend
+
+Open a new terminal from the project root.
+
+Navigate to the frontend directory:
+
+cd frontend
+
+Install frontend dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+**Frontend URL:**
+
+http://localhost:5173/
 
 
-## 📊 Model Evaluation
+## 🔄 Application Workflow
 
-* **Algorithm:** Decision Tree Classifier
-* **Model File:** `model.pkl`
-* **Input Features:** Stream, CGPA, Internships, Projects, SkillScore, and Backlogs
-* **Prediction Output:** Placement classification and estimated placement probability
-* **Evaluation Criteria:** Student academic performance, internship experience, project count, technical skill score, and backlog count.
+1. A student registers and logs into TechPlacify.
+2. The student enters academic details, technical skills, internships, projects, and backlog information.
+3. The React frontend sends the information to the Django REST API.
+4. The backend processes the submitted student profile.
+5. The Machine Learning model predicts the placement outcome and estimated probability.
+6. The system evaluates eligibility for different company tiers.
+7. Personalized recommendations are generated based on the student's profile.
+8. The prediction is saved to the database.
+9. Students can view their previous predictions through the history page.
 
 
-**Disclaimer:** Placement predictions and company-tier recommendations are estimates for educational purposes only and do not guarantee actual placement or salary.
+
+## 🎯 Project Objective
+
+TechPlacify aims to help students understand their placement readiness, identify suitable company tiers, recognize skill gaps, and take actionable steps toward improving their employability.
+
+By combining Machine Learning-based prediction with profile-based eligibility evaluation and personalized career recommendations, TechPlacify provides students with a structured approach to placement preparation.
+
+**Note:** Placement probabilities are estimates generated by the application's prediction logic and do not guarantee actual recruitment or placement.
+
+
